@@ -136,6 +136,4 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 1500); // 1500ms de delay para simular processamento
     });
 
-    // Confirmação de inicialização no console
-    console.log('✅ Calculadora inicializada!');
 });
