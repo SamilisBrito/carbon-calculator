@@ -138,30 +138,38 @@ var UI = {
                 <!-- Rota: Origem → Destino -->
                 <div class="results__card results__card--route">
                     <span class="results__card-icon">📍</span>
-                    <span class="results__card-label">Rota</span>
-                    <span class="results__card-value">${data.origin}</span>
-                    <span class="results__card-sub">→ ${data.destination}</span>
+                    <div class="results__card-data">
+                        <span class="results__card-label">Rota</span>
+                        <span class="results__card-value">${data.origin}</span>
+                        <span class="results__card-sub">→ ${data.destination}</span>
+                    </div>
                 </div>
 
                 <!-- Distância em km -->
                 <div class="results__card">
                     <span class="results__card-icon">📏</span>
-                    <span class="results__card-label">Distância</span>
-                    <span class="results__card-value">${this.formatNumber(data.distance, 0)} km</span>
+                    <div class="results__card-data">
+                        <span class="results__card-label">Distância</span>
+                        <span class="results__card-value">${this.formatNumber(data.distance, 0)} km</span>
+                    </div>
                 </div>
 
                 <!-- Emissão de CO2 em kg -->
                 <div class="results__card results__card--emission">
                     <span class="results__card-icon">🍃</span>
-                    <span class="results__card-label">Emissão de CO2</span>
-                    <span class="results__card-value">${this.formatNumber(data.emission, 2)} kg</span>
+                    <div class="results__card-data">
+                        <span class="results__card-label">Emissão de CO2</span>
+                        <span class="results__card-value">${this.formatNumber(data.emission, 2)} kg</span>
+                    </div>
                 </div>
 
                 <!-- Modo de transporte selecionado -->
                 <div class="results__card">
                     <span class="results__card-icon">${modeInfo.icon}</span>
-                    <span class="results__card-label">Transporte</span>
-                    <span class="results__card-value">${modeInfo.label}</span>
+                    <div class="results__card-data">
+                        <span class="results__card-label">Transporte</span>
+                        <span class="results__card-value">${modeInfo.label}</span>
+                    </div>
                 </div>
 
                 ${savingsCard}
