@@ -1,0 +1,356 @@
+/* ============================================
+   CALCULADORA DE EMISSÃO DE CO2
+   Modern CSS — Eco-friendly Theme
+   ============================================ */
+
+/* ---------- CUSTOM PROPERTIES ---------- */
+:root {
+    /* Eco-friendly color palette */
+    --primary: #10b981;
+    --secondary: #059669;
+    --accent: #34d399;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+    --info: #3b82f6;
+    --text: #1f2937;
+    --text-light: #6b7280;
+    --bg: #f3f4f6;
+    --white: #ffffff;
+
+    /* Spacing scale */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+
+    /* Border radius */
+    --radius: 0.5rem;
+    --radius-lg: 1rem;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* ---------- BASE STYLES ---------- */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%);
+    min-height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+        Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+    color: var(--text);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-sm);
+}
+
+/* ---------- UTILITY CLASSES ---------- */
+.hidden {
+    display: none !important;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: var(--spacing-md);
+    position: relative;
+    padding-bottom: var(--spacing-xs);
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: var(--primary);
+    border-radius: 2px;
+}
+
+/* ---------- HEADER ---------- */
+.header {
+    background: var(--white);
+    box-shadow: var(--shadow-md);
+    padding: var(--spacing-lg) var(--spacing-sm);
+    text-align: center;
+}
+
+.header__title {
+    color: var(--primary);
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: var(--spacing-xs);
+}
+
+.header__subtitle {
+    color: var(--text-light);
+    font-size: 1rem;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* ---------- MAIN ---------- */
+.main {
+    max-width: 720px;
+    margin: var(--spacing-lg) auto;
+    padding: 0 var(--spacing-sm);
+}
+
+/* ---------- FORM / CALCULATOR CARD ---------- */
+.form {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    padding: var(--spacing-lg);
+}
+
+/* Form groups */
+.form__group {
+    margin-bottom: var(--spacing-md);
+}
+
+.form__group--checkbox {
+    margin-top: var(--spacing-xs);
+    margin-bottom: var(--spacing-md);
+}
+
+/* Labels */
+.form__label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
+    color: var(--text);
+}
+
+/* Text & number inputs */
+.form__input {
+    width: 100%;
+    padding: 0.75rem var(--spacing-sm);
+    border: 2px solid #e5e7eb;
+    border-radius: var(--radius);
+    font-size: 1rem;
+    color: var(--text);
+    background: var(--white);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    outline: none;
+}
+
+.form__input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
+}
+
+.form__input[readonly] {
+    background: var(--bg);
+    cursor: not-allowed;
+}
+
+/* Helper text */
+.form__helper {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-light);
+    margin-top: 0.25rem;
+}
+
+/* ---------- CHECKBOX ---------- */
+.form__checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    cursor: pointer;
+}
+
+.form__checkbox {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--primary);
+    cursor: pointer;
+}
+
+.form__checkbox-text {
+    font-size: 0.95rem;
+    color: var(--text);
+}
+
+/* ---------- TRANSPORT MODE GRID ---------- */
+.form__fieldset {
+    border: none;
+    margin-bottom: var(--spacing-md);
+}
+
+.form__legend {
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: var(--spacing-sm);
+    font-size: 1rem;
+}
+
+.form__transport-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-sm);
+}
+
+/* Hide actual radio inputs */
+.form__transport-radio {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Card label */
+.form__transport-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-sm);
+    border: 2px solid #e5e7eb;
+    border-radius: var(--radius);
+    cursor: pointer;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+    user-select: none;
+}
+
+.form__transport-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Checked state — adjacent sibling selector */
+.form__transport-radio:checked + .form__transport-card {
+    border-color: var(--primary);
+    border-width: 2px;
+    background-color: rgba(16, 185, 129, 0.08);
+}
+
+.form__transport-icon {
+    font-size: 3rem;
+    line-height: 1;
+}
+
+.form__transport-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text);
+}
+
+/* ---------- SUBMIT BUTTON ---------- */
+.form__submit {
+    width: 100%;
+    padding: 0.85rem var(--spacing-sm);
+    background: var(--primary);
+    color: var(--white);
+    font-size: 1.05rem;
+    font-weight: 700;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    margin-top: var(--spacing-xs);
+}
+
+.form__submit:hover {
+    background: var(--secondary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.form__submit:disabled {
+    background: #9ca3af;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* ---------- LOADING SPINNER ---------- */
+.spinner {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border: 4px solid #e5e7eb;
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ---------- RESULTS SECTIONS ---------- */
+.results,
+.comparison,
+.carbon-credits {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    padding: var(--spacing-lg);
+    margin-top: var(--spacing-md);
+}
+
+.results__title,
+.comparison__title,
+.carbon-credits__title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: var(--spacing-sm);
+    padding-bottom: var(--spacing-xs);
+    border-bottom: 2px solid var(--accent);
+}
+
+/* ---------- FOOTER ---------- */
+.footer {
+    background: var(--white);
+    box-shadow: var(--shadow-md);
+    text-align: center;
+    padding: var(--spacing-lg) var(--spacing-sm);
+    margin-top: var(--spacing-lg);
+}
+
+.footer__text {
+    color: var(--secondary);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* ---------- RESPONSIVE (Desktop ≥ 768px) ---------- */
+@media (min-width: 768px) {
+    .header__title {
+        font-size: 2.5rem;
+    }
+
+    .header__subtitle {
+        font-size: 1.1rem;
+    }
+
+    .form {
+        padding: var(--spacing-xl);
+    }
+
+    .form__transport-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
